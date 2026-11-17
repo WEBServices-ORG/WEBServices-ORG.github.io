@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#08090d">
+  <meta name="description" content="See what needs updating on your Mac, update supported apps here, and know where to go for the rest.">
+  <meta property="og:title" content="Update Shelf for macOS">
+  <meta property="og:description" content="Your Mac updates. One clear view. See what needs updating and what to do next.">
+  <meta property="og:image" content="https://webservices-org.github.io/update-shelf-releases/assets/social-card.png">
+  <title>Update Shelf — Your Mac updates, one clear view</title>
+  <link rel="icon" href="assets/update-shelf-icon-092.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/update-shelf-icon-092.png">
+  <style>
+    :root { color-scheme: dark; --bg:#08090d; --surface:#111319; --line:#242832; --text:#f4f6fb; --muted:#969da9; --blue:#3478f6; --blue-soft:#8bb5ff; --orange:#ff9f43; font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text",sans-serif; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:radial-gradient(circle at 72% 18%,rgba(52,120,246,.13),transparent 29rem),var(--bg); color:var(--text); -webkit-font-smoothing:antialiased; }
+    a { color:inherit; }
+    .shell { width:min(1160px,calc(100% - 40px)); margin:auto; }
+    nav { height:76px; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:flex; align-items:center; gap:11px; text-decoration:none; font-weight:720; }
+    .brand img { width:34px; height:34px; border-radius:9px; }
+    .nav-link { color:var(--muted); text-decoration:none; font-size:.92rem; }
+    .nav-link:hover { color:var(--text); }
+    .hero { min-height:650px; display:grid; grid-template-columns:.88fr 1.12fr; align-items:center; gap:64px; padding:72px 0 88px; }
+    .kicker { color:var(--blue-soft); font-size:.76rem; font-weight:750; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { margin:18px 0 20px; font-size:clamp(3.5rem,7vw,6.4rem); line-height:.92; letter-spacing:-.065em; max-width:700px; }
+    .lead { color:#b5bbc5; font-size:clamp(1.08rem,2vw,1.28rem); line-height:1.58; max-width:560px; }
+    .actions { display:flex; flex-direction:column; align-items:flex-start; gap:12px; margin-top:32px; }
+    .download { display:inline-flex; align-items:center; gap:10px; padding:14px 20px; border-radius:12px; background:var(--blue); color:white; text-decoration:none; font-weight:700; box-shadow:0 12px 32px rgba(52,120,246,.2); transition:transform .18s ease,background .18s ease; }
+    .download:hover { background:#4385fb; transform:translateY(-1px); }
+    .download svg { width:18px; }
+    .support { display:inline-flex; align-items:center; gap:8px; padding:13px 17px; border:1px solid #343944; border-radius:12px; color:#d9dde5; text-decoration:none; font-weight:650; transition:border-color .18s ease,color .18s ease,transform .18s ease; }
+    .support:hover { border-color:#596273; color:white; transform:translateY(-1px); }
+    .support svg { width:17px; }
+    .version { color:var(--muted); font-size:.86rem; line-height:1.45; }
+    .product { position:relative; }
+    .product-screenshot { display:block; overflow:hidden; border:1px solid #2a2e38; border-radius:14px; box-shadow:0 32px 90px rgba(0,0,0,.52); }
+    .product-screenshot img { display:block; width:100%; height:auto; }
+    .screenshot-caption { margin:14px 0 0; text-align:center; color:var(--muted); font-size:.8rem; line-height:1.5; }
+    .screenshot-caption a { text-underline-offset:3px; }
+    .features { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; border:1px solid var(--line); border-radius:18px; overflow:hidden; background:var(--line); margin:12px 0 112px; }
+    .feature { background:var(--surface); padding:30px; }
+    .feature b { display:block; margin-bottom:9px; font-size:1rem; }
+    .feature p { margin:0; color:var(--muted); font-size:.91rem; line-height:1.55; }
+    .trust { display:flex; justify-content:space-between; align-items:center; gap:30px; padding:34px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .trust-copy strong { display:block; margin-bottom:6px; }
+    .trust-copy span { color:var(--muted); font-size:.9rem; }
+    .hash { max-width:460px; color:#7d8490; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.68rem; overflow-wrap:anywhere; text-align:right; }
+    footer { min-height:150px; display:flex; align-items:center; justify-content:space-between; color:var(--muted); font-size:.78rem; }
+    .publisher { display:flex; align-items:center; gap:10px; }
+    .publisher img { width:28px; height:28px; border-radius:7px; }
+    .footer-links { display:flex; align-items:center; gap:20px; }
+    .footer-links a { color:var(--muted); text-decoration:none; }
+    .footer-links a:hover { color:var(--text); }
+    @media (max-width:850px) { .hero{grid-template-columns:1fr;padding-top:44px;gap:58px} h1{max-width:620px}.product{margin:0 8px}.features{grid-template-columns:1fr}.trust{align-items:flex-start;flex-direction:column}.hash{text-align:left} }
+    @media (max-width:560px) { .shell{width:min(100% - 28px,1160px)} nav{height:64px}.nav-link{display:none}.hero{padding:46px 0 70px} h1{font-size:3.65rem}footer{align-items:flex-start;flex-direction:column;justify-content:center;gap:12px} }
+    @media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto}.download,.support{transition:none} }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav>
+      <a class="brand" href="#top"><img src="assets/update-shelf-icon-092.png" alt=""><span>Update Shelf</span></a>
+      <a class="nav-link" href="#security">Security &amp; verification</a>
+    </nav>
+    <main id="top">
+      <section class="hero">
+        <div>
+          <img src="assets/update-shelf-icon-092.png" alt="Update Shelf app icon" width="128" height="128" style="display:block;margin-bottom:24px">
+          <div class="kicker">Know what needs updating</div>
+          <h1>Your Mac updates.<br>One clear view.</h1>
+          <p class="lead">See which Mac apps, tools and audio plug-ins need attention in one place. Install supported updates from Update Shelf, or go straight to the developer’s updater or download page.</p>
+          <div class="actions">
+            <a class="download" href="https://github.com/WEBServices-ORG/update-shelf-releases/releases/download/v0.9.17-build157/Update-Shelf-0.9.17-Apple-Silicon.dmg" download><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Download for Mac</a>
+            <a class="support" href="https://www.paypal.com/ncp/payment/VRVYW4BB3CH3L" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Support development</a>
+            <div class="version">Stable v0.9.17 · macOS 14 or later · Apple silicon<br>Signed &amp; notarized app</div>
+          </div>
+          <p class="version"><a href="https://github.com/WEBServices-ORG/update-shelf-releases/releases/tag/v0.9.17-build157">What’s new in 0.9.17</a></p>
+        </div>
+        <figure class="product" style="margin:0">
+          <div class="product-screenshot">
+            <img src="assets/update-shelf-0.9.17-screenshot-720p.png" alt="Update Shelf 0.9.17 showing Stop scanning beside Check for updates, and Launch app beside Re-scan." width="1280" height="720" fetchpriority="high">
+          </div>
+          <figcaption class="screenshot-caption">Current release: 0.9.17 · Stop scanning and horizontal app actions</figcaption>
+        </figure>
+      </section>
+      <section class="features" aria-label="What Update Shelf does">
+        <div class="feature"><b>Find supported updates</b><p>Bring supported Mac apps, command-line tools and connected GitHub releases into one searchable library. See installed and available versions, then review what needs updating. Coverage varies by app and source.</p></div>
+        <div class="feature"><b>Install eligible updates</b><p>Install supported updates one at a time and see whether each change succeeded or needs another check. Direct app updates keep the previous app bundle for recovery. Not every detected update can be installed here.</p></div>
+        <div class="feature"><b>Know where to go next</b><p>For App Store apps, open the app’s store page or Apple’s Updates list. For vendor-managed apps, open the developer’s updater or website. Return to Update Shelf to check the installed version again.</p></div>
+        <div class="feature"><b>Choose when to update</b><p>Postpone an app until tomorrow or next week, ignore an app, or skip a particular version. These choices control Update Shelf; they do not disable another app’s own updater.</p></div>
+        <div class="feature"><b>Keep track of changes</b><p>Search past update results and recheck the apps in your current view without installing anything. Opening Update Shelf shows your saved results; it does not start a scan.</p></div>
+        <div class="feature"><b>Connect a source</b><p>Follow releases from a GitHub repository or save a developer’s website for quick access. You can also compare versions with Homebrew without enabling installation. A saved website is a bookmark, not an automatic update checker.</p></div>
+        <div class="feature"><b>Optional background work</b><p>Scheduled checks are a separate opt-in. Automatic installation has its own switch and is limited to one eligible Homebrew app per successful cycle, with safety checks. Other updates remain manual.</p></div>
+        <div class="feature"><b>See uncertainty clearly</b><p>Failed checks and unknown versions are not reported as up to date. Some apps require a manual check; Update Shelf does not promise complete coverage of every Mac app or plug-in.</p></div>
+        <div class="feature"><b>Check audio plug-ins</b><p>Check supported audio plug-ins against their publishers’ releases. Open the vendor’s manager or download page to update, then return to verify the installed files. Plug-in installation stays with the vendor.</p></div>
+        <div class="feature"><b>Understand your plug-in library</b><p>Choose which folders to scan, inspect plug-in versions and processor support, and spot different versions across formats. These checks do not confirm compatibility with your macOS version or music software.</p></div>
+        <div class="feature"><b>Current testing status</b><p>The current release is signed and notarized, with automated tests and targeted app checks completed. Broader accessibility, account, sleep/scheduling, and failure-recovery testing remains in progress.</p></div>
+      </section>
+      <p class="version"><a href="https://github.com/WEBServices-ORG/update-shelf-releases/releases/tag/v0.9.17-build157">What’s new in 0.9.17</a><br>New in 0.9.17: Stop scanning now sits beside Check for updates. It prevents further checks after the current bounded command finishes, keeps previous completed results, and marks the interrupted scan incomplete. Launch app and Re-scan remain side by side. The older three-card layout and guarded uv pin correction are retained.</p>
+      <section class="trust" id="security">
+        <div class="trust-copy"><strong>Developer ID signed. App and disk image notarized by Apple.</strong><span>Version 0.9.17 · Build 157 · macOS on Apple silicon<br>The app and the disk image are both notarized and stapled.</span></div>
+        <div class="hash">SHA-256<br>88dca1700b91a5df95f1cef10f572016b78fbc9e8ec7bd0e7ee72ae6d840edbe</div>
+      </section>
+    </main>
+    <footer><div class="publisher"><img src="assets/webservices-mark.png" alt=""><span>A WEBServices product</span></div><div class="footer-links"><a href="https://www.paypal.com/ncp/payment/VRVYW4BB3CH3L" target="_blank" rel="noopener noreferrer">Support development</a><span>© 2026 WEBServices</span></div></footer>
+  </div>
+</body>
+</html>
